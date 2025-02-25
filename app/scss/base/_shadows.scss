@@ -1,0 +1,21 @@
+:root {
+  --shadow-color: 206deg 11% 60%;
+  --shadow-elevation-low:
+    0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
+    0px 1.7px 1.9px -1.2px hsl(var(--shadow-color) / 0.34),
+    0px 4px 4.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  --shadow-elevation-medium:
+    0px 1px 1.1px hsl(var(--shadow-color) / 0.36),
+    0px 3.3px 3.7px -0.8px hsl(var(--shadow-color) / 0.36),
+    0.1px 8.2px 9.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    0.2px 20px 22.5px -2.5px hsl(var(--shadow-color) / 0.36);
+  --shadow-elevation-high:
+    0px 1px 1.1px hsl(var(--shadow-color) / 0.34),
+    0.1px 5.8px 6.5px -0.4px hsl(var(--shadow-color) / 0.34),
+    0.1px 10.9px 12.3px -0.7px hsl(var(--shadow-color) / 0.34),
+    0.2px 17.9px 20.1px -1.1px hsl(var(--shadow-color) / 0.34),
+    0.3px 28.6px 32.2px -1.4px hsl(var(--shadow-color) / 0.34),
+    0.4px 44.7px 50.3px -1.8px hsl(var(--shadow-color) / 0.34),
+    0.6px 67.9px 76.4px -2.1px hsl(var(--shadow-color) / 0.34),
+    0.9px 100px 112.5px -2.5px hsl(var(--shadow-color) / 0.34);
+}

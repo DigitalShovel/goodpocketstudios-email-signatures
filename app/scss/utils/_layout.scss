@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  overflow: auto;
+  height: calc(93dvh - (var(--navbar-height)));
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+
+  @media (max-width: 768px) {
+    height: calc(88dvh - (var(--navbar-height)));
+    scroll-padding-top: 9rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 1rem;
+  border: 2px solid #002159;
+  border-radius: 10px;
+  background-color: #fff;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(1, 1fr);
+    overflow-x: scroll;
+  }
+}

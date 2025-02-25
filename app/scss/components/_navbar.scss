@@ -1,0 +1,49 @@
+:root {
+  --navbar-height: 69px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem calc(2rem + 10px) 1rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #f1f5f8;
+  box-shadow: var(--shadow-elevation-low);
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__logo {
+    height: 32px;
+    min-height: 32px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    @media (max-width: 1100px) {
+      flex-flow: wrap;
+    }
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    // This might be needed in the future if we add more items to the navbar
+    
+    // &-item {
+    //   @media (max-width: 1440px) {
+    //     display: none;
+    //   }
+    // }
+  }
+}
