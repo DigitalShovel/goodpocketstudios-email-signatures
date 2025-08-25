@@ -11,6 +11,46 @@
   </head>
 
   <body>
+    <!-- Authentication Overlay -->
+    <div id="authOverlay" class="auth-overlay">
+      <div class="auth-container">
+        <div class="auth-header">
+          <img class="auth-logo" src="icons/gp_logo_vertical_combination_black_medium.svg" alt="Good Pocket Studios Logo" />
+          <h1>Good Pocket Studios</h1>
+          <p>Email Signature Access</p>
+        </div>
+        
+        <!-- Password Form -->
+        <form id="authForm" class="auth-form">
+          <div id="passwordForm" class="password-form">
+            <div class="input-group">
+              <label for="passwordInput">Enter Password:</label>
+              <div class="password-input-container">
+                <input type="password" id="passwordInput" class="password-field" required />
+                <button type="button" class="password-toggle" id="passwordToggle" title="Show Password">
+                  🙈
+                </button>
+              </div>
+            </div>
+            <div id="authError" class="auth-error"></div>
+            <div class="auth-info">
+              Attempts remaining: <span id="attemptsRemaining">5</span>
+            </div>
+            <button type="submit" class="btn btn-auth">Access Signatures</button>
+          </div>
+        </form>
+        
+        <!-- Timeout Message -->
+        <div id="timeoutMessage" class="timeout-message" style="display: none;">
+          <div class="timeout-icon">🔒</div>
+          <h2>Access Temporarily Locked</h2>
+          <p>Too many failed attempts. Please try again in <span id="timeoutMinutes">15</span> minute(s).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" style="display: none;">
     <nav class="navbar">
       <div>
         <img class="navbar__logo" src="icons/gp_logo_vertical_combination_black_small.svg" alt="" />
@@ -40,124 +80,6 @@
           <h2 id="gps">Good Pocket Studios</h2>
         </div>
         <div class="grid">
-          <!-- Ziad El Shourbagy -->
-          <div class="signature-container">
-            <table class="signature" cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-              <tbody>
-                <tr>
-                  <td width="150" style="vertical-align: middle">
-                    <span style="margin-right: 20px; display: block">
-                      <img title="Digital Shovel Logo" src="https://s6.imgcdn.dev/Ev8tn.png" role="presentation" width="130" style="max-width: 130px; margin-bottom: 10px" />
-                    </span>
-                    <span color="#000000" style="font-weight: 600; padding-top: 10px; margin: 0px; font-size: 16px; color: #000">
-                      <span>Ziad El Shourbagy</span>
-                      <br />
-                    </span>
-                    <span color="#000000" font-size="small" style="margin: 0px; color: rgb(70, 70, 70); font-size: 11px; line-height: 14px">Marketing Manager</span>
-                    <a href="mailto:ziad@goodpocketstudios.com" color="#000000" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 11px">ziad@goodpocketstudios.com</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="btn__container">
-              <button class="btn btn__select">Select</button>
-              <button disabled class="btn btn__copy">Copy</button>
-            </div>
-          </div>
-          <!-- Ziad El Shourbagy (DS Email) -->
-          <div class="signature-container">
-            <table class="signature" cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-              <tbody>
-                <tr>
-                  <td>
-                    <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-                      <tbody>
-                        <tr>
-                          <td width="150" style="vertical-align: middle">
-                            <span style="margin-right: 20px; display: block">
-                              <img title="Digital Shovel Logo" src="https://s6.imgcdn.dev/flKNg.png" role="presentation" width="130" style="max-width: 130px; margin-bottom: 5px" />
-                            </span>
-                            <span color="#000000" style="font-weight: 600; padding-top: 10px; margin: 0px; font-size: 16px; color: #1e75df">
-                              <span>Ziad El Shourbagy</span>
-                              <br />
-                            </span>
-                            <span color="#000000" font-size="small" style="margin: 0px; color: rgb(0, 0, 0); font-size: 11px; line-height: 14px">Marketing Manager</span>
-                          </td>
-                          <td width="30">
-                            <div style="width: 30px"></div>
-                          </td>
-                          <td direction="vertical" width="1" style="width: 1px; border-bottom: none; border-left: 1px solid #1e75df"></td>
-                          <td width="30">
-                            <div style="width: 30px"></div>
-                          </td>
-                          <td style="vertical-align: middle">
-                            <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-                              <tbody>
-                                <tr height="25" style="vertical-align: middle">
-                                  <td width="30" style="vertical-align: middle; min-width: 30px">
-                                    <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-                                      <tbody>
-                                        <tr>
-                                          <td style="display: block; max-height: 18px" title="Email">
-                                            <img title="Email" src="https://s6.imgcdn.dev/flQfV.png" alt="Email Icon" width="18" />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                  <td style="padding: 0px">
-                                    <a href="mailto:z.elshourbagy@digitalshovel.com" color="#000000" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px">z.elshourbagy@digitalshovel.com</a>
-                                  </td>
-                                </tr>
-                                <tr height="25" style="vertical-align: middle">
-                                  <td width="30" style="vertical-align: middle">
-                                    <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-                                      <tbody>
-                                        <tr>
-                                          <td style="display: block; max-height: 18px" title="Website">
-                                            <img title="Website" src="https://s6.imgcdn.dev/flkDK.png" alt="Website Icon" width="18" />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                  <td style="padding: 0px">
-                                    <a href="//www.digitalshovel.com" color="#000000" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px">www.digitalshovel.com</a>
-                                  </td>
-                                </tr>
-                                <tr height="25" style="vertical-align: middle">
-                                  <td width="30" style="vertical-align: middle">
-                                    <table cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
-                                      <tbody>
-                                        <tr>
-                                          <td style="display: block; max-height: 18px" title="Telegram">
-                                            <img title="Telegram" src="https://s6.imgcdn.dev/flnyo.png" alt="Telegram Icon" width="18" />
-                                          </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </td>
-                                  <td style="padding: 0px">
-                                    <span color="#000000" font-size="small" style="color: rgb(0, 0, 0); margin: 0px; font-size: 12px; line-height: 14px"> @Digital_Shovel </span>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="btn__container">
-              <button class="btn btn__select">Select</button>
-              <button disabled class="btn btn__copy">Copy</button>
-            </div>
-          </div>
           <!-- Ethan Hezekiah Lachica -->
           <div class="signature-container">
             <table class="signature" cellpadding="0" cellspacing="0" style="vertical-align: -webkit-baseline-middle; font-size: small; font-family: Inter, sans-serif">
@@ -211,5 +133,6 @@
         </div>
       </div>
     </div>
+    </div> <!-- End Main Content -->
   </body>
 </html>
