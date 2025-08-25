@@ -2,7 +2,7 @@
 const AUTH_CONFIG = {
     password: 'goodp0cket', // Set your desired password here
     maxAttempts: 5,
-    timeoutMinutes: 15
+    timeoutMinutes: 5
 };
 
 let previousCopyButton = null;
@@ -68,21 +68,54 @@ function showAuthForm() {
 
 // Show timeout message
 function showTimeoutMessage() {
-    const timeRemaining = Math.ceil((timeoutUntil - new Date()) / (1000 * 60));
     document.getElementById('passwordForm').style.display = 'none';
     document.getElementById('timeoutMessage').style.display = 'block';
-    document.getElementById('timeoutMinutes').textContent = timeRemaining;
     
-    // Update timeout countdown every minute
-    const interval = setInterval(() => {
-        const remaining = Math.ceil((timeoutUntil - new Date()) / (1000 * 60));
-        if (remaining <= 0) {
-            clearInterval(interval);
+    updateTimeoutDisplay();
+}
+
+// Update timeout display with countdown and progress bar
+function updateTimeoutDisplay() {
+    const timeoutStart = new Date(timeoutUntil.getTime() - AUTH_CONFIG.timeoutMinutes * 60 * 1000);
+    const totalDuration = AUTH_CONFIG.timeoutMinutes * 60 * 1000; // Total timeout in milliseconds
+    
+    const updateInterval = setInterval(() => {
+        const now = new Date();
+        const remainingMs = timeoutUntil - now;
+        
+        if (remainingMs <= 0) {
+            clearInterval(updateInterval);
             showPasswordForm();
-        } else {
-            document.getElementById('timeoutMinutes').textContent = remaining;
+            return;
         }
-    }, 60000);
+        
+        // Calculate minutes and seconds
+        const totalSeconds = Math.ceil(remainingMs / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        // Format time display (MM:SS)
+        const timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        document.getElementById('timeoutTime').textContent = timeDisplay;
+        
+        // Calculate progress percentage (how much time has elapsed)
+        const elapsedMs = now - timeoutStart;
+        const progressPercentage = Math.min((elapsedMs / totalDuration) * 100, 100);
+        const remainingPercentage = 100 - progressPercentage;
+        
+        // Update progress bar (shows remaining time)
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = `${remainingPercentage}%`;
+        
+        // Change color as time runs out
+        if (remainingPercentage > 60) {
+            progressBar.style.background = 'linear-gradient(90deg, var(--red-500) 0%, var(--red-400) 50%, var(--red-300) 100%)';
+        } else if (remainingPercentage > 30) {
+            progressBar.style.background = 'linear-gradient(90deg, var(--yellow-500) 0%, var(--yellow-400) 50%, var(--yellow-300) 100%)';
+        } else {
+            progressBar.style.background = 'linear-gradient(90deg, var(--red-600) 0%, var(--red-500) 50%, var(--red-400) 100%)';
+        }
+    }, 1000); // Update every second
 }
 
 // Show password form

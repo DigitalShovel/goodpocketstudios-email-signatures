@@ -43,7 +43,13 @@
         <div id="timeoutMessage" class="timeout-message" style="display: none;">
           <div class="timeout-icon">🔒</div>
           <h2>Access Temporarily Locked</h2>
-          <p>Too many failed attempts. Please try again in <span id="timeoutMinutes">15</span> minute(s).</p>
+          <p>Too many failed attempts. Please try again in:</p>
+          <div class="timeout-display">
+            <span id="timeoutTime">5:00</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
         </div>
       </div>
     </div>
